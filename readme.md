@@ -1,3 +1,8 @@
+# This is a fork
+## original repo: https://github.com/smol-ai/developer
+
+---
+
 # 🐣 smol developer
 
 <a href="https://app.e2b.dev/agent/smol-developer" target="_blank" rel="noopener noreferrer">
@@ -87,20 +92,21 @@ from smol_dev.prompts import plan, specify_file_paths, generate_code_sync
 
 prompt = "a HTML/JS/CSS Tic Tac Toe Game"
 
-shared_deps = plan(prompt) # returns a long string representing the coding plan
+shared_deps = plan(prompt)  # returns a long string representing the coding plan
 
 # do something with the shared_deps plan if you wish, for example ask for user confirmation/edits and iterate in a loop
 
-file_paths = specify_file_paths(prompt, shared_deps) # returns an array of strings representing the filenames it needs to write based on your prompt and shared_deps. Relies on OpenAI's new Function Calling API to guarantee JSON.
+file_paths = specify_file_paths(prompt,
+                                shared_deps)  # returns an array of strings representing the filenames it needs to write based on your prompt and shared_deps. Relies on OpenAI's new Function Calling API to guarantee JSON.
 
 # do something with the filepaths if you wish, for example display a plan
 
 # loop through file_paths array and generate code for each file
 for file_path in file_paths:
-    code = generate_code_sync(prompt, shared_deps, file_path) # generates the source code of each file
+  code = generate_code_sync(prompt, shared_deps, file_path)  # generates the source code of each file
 
-    # do something with the source code of the file, eg. write to disk or display in UI
-    # there is also an async `generate_code()` version of this
+  # do something with the source code of the file, eg. write to disk or display in UI
+  # there is also an async `generate_code()` version of this
 ```
 
 ### In API mode (via [Agent Protocol](https://github.com/e2b-dev/agent-protocol))

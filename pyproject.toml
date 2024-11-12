@@ -1,26 +1,32 @@
-[tool.poetry]
+[project]
 name = "smol_dev"
 version = "0.0.3"
 description = "python module of smol developer"
-authors = ["swyx <swyx@dontemail.me>"]
+authors = [{name = "swyx", email = "swyx@dontemail.me"}]
 license = "MIT"
 readme = "readme.md"
 packages = [{ include = "smol_dev" }]
-
-[tool.poetry.dependencies]
-python = ">=3.10,<4.0.0"
-openai = "^0.27.8"
-openai-function-call = "^0.0.5"
-tenacity = "^8.2.2"
-agent-protocol = "^1.0.0"
+requires-python=">=3.10,<3.12.0"
+dependencies = [
+     "openai",
+     "openai-function-call",
+     "tenacity",
+     "agent-protocol",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry.scripts]
+[tool.hatch.scripts]
 src = "src.__main__:main"
 api = "smol_dev.api:main"
+
+[tool.uv]
+dev-dependencies = [
+    "pip>=24.3.1",
+    "setuptools>=75.4.0",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/smol-ai/developer"
